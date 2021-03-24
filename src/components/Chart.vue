@@ -12,4 +12,11 @@ export default {
 
 <style scoped>
 
+.chart {
+  margin-top: 5rem;
+  /*background-color: gray;*/
+  width: 100%;
+  height: 15rem;
+}
+
 </style>

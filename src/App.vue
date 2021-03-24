@@ -55,8 +55,6 @@ body {
   font-family: 'Noto Sans', sans-serif;
   color: white;
 
-  max-width: 100vw;
-  max-height: 100vh;
   overflow: hidden;
 }
 
@@ -87,7 +85,7 @@ h1, h2, h3, h4, h5 {
   left: 0;
   top: 0;
 
-  background-color: #4d4b67;
+  background-color: #43415b;
 }
 
 .container {
@@ -102,11 +100,11 @@ h1, h2, h3, h4, h5 {
   height: 100vh;
 
   background: linear-gradient(0deg,
-  rgba(58,55,81,1) 0%,
-  rgba(58,55,81,1) 30%,
-  rgba(58,55,81,0.91) 60%,
-  rgba(58,55,81,1) 98%,
-  rgb(58, 55, 81) 100%
+  rgba(46, 44, 73, 1) 0%,
+  rgba(46, 44, 73, 1) 30%,
+  rgba(46, 44, 73, 0.91) 60%,
+  rgba(46, 44, 73, 1) 98%,
+  rgb(46, 44, 73) 100%
   );
 }
 

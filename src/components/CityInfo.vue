@@ -37,7 +37,7 @@ export default {
   align-items: center;
 
   height: 10rem;
-  max-width: 60%;
+  width: 60%;
   margin: 0 auto;
 }
 
