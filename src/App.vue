@@ -1,8 +1,14 @@
 <template>
   <div class="page" id="app">
-    <Header/>
+    <header class="header">
+      <div class="container-fluid">
 
-    <div class="main">
+        <Header/>
+
+      </div>
+    </header>
+
+    <main class="main">
       <div class="container">
 
         <CityInfo/>
@@ -12,7 +18,7 @@
         <Forecast/>
 
       </div>
-    </div>
+    </main>
   </div>
 </template>
 
@@ -48,6 +54,10 @@ body {
 
   font-family: 'Noto Sans', sans-serif;
   color: white;
+
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 *, *:after, *:before {
@@ -62,9 +72,23 @@ h1, h2, h3, h4, h5 {
   width: 100vw;
   height: 100vh;
 }
-</style>
 
-<style scoped>
+.container-fluid {
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  width: 100%;
+  height: 6rem;
+  z-index: 1000;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  background-color: #4d4b67;
+}
 
 .container {
   max-width: 120rem;
@@ -72,6 +96,8 @@ h1, h2, h3, h4, h5 {
 }
 
 .main {
+  padding-top: 10rem;
+
   width: 100%;
   height: 100vh;
 
@@ -83,4 +109,5 @@ h1, h2, h3, h4, h5 {
   rgb(58, 55, 81) 100%
   );
 }
+
 </style>
