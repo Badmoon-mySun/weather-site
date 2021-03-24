@@ -1,0 +1,131 @@
+body {
+    padding: 0;
+    margin: 0;
+
+    background: url("src/assets/imgsets/img/NewYork.jpg") center no-repeat;
+    background-size: cover;
+
+    font-family: 'Noto Sans', sans-serif;
+    color: white;
+}
+
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    width: 100%;
+    height: 10vh;
+    z-index: 1000;
+
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+
+    background-color: #4d4b67;
+}
+
+.header__logo {
+    width: 10vh;
+}
+
+.logo_img {
+    width: 10vh;
+    height: 10vh;
+}
+
+.main {
+    width: 100%;
+    height: 100vh;
+    padding: 20vh 0 0 0;
+
+    background: linear-gradient(0deg,
+    rgba(58,55,81,1) 0%,
+    rgba(58,55,81,1) 30%,
+    rgba(58,55,81,0.91) 60%,
+    rgba(58,55,81,1) 98%,
+    rgb(58, 55, 81) 100%
+    );
+}
+
+.main__inner {
+    width: 90%;
+
+    margin: 0 auto;
+}
+
+.container__city {
+    width: 70%;
+    height: 7rem;
+
+    margin: 0 auto;
+
+    display: flex;
+}
+
+.city_temp {
+    padding: 0 1.25rem;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+
+    border-right: 1px solid #9f9f9f;
+}
+
+.city_temp__img {
+    width: 7rem;
+    height: 7rem;
+    margin: 0 10px;
+}
+
+.city_temp__digit {
+    font-size: 7rem;
+}
+
+.city_temp__char {
+    font-size: 3rem;
+    padding: 0 0 4rem 0;
+}
+
+.city__des {
+    height: 100%;
+
+    padding: 0 0 0 1.25rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.des_temp {
+    font-family: 'Nunito', sans-serif;
+    font-style: italic;
+    font-size: 1rem;
+
+    margin: 0 0 .1rem 1rem;
+}
+
+.des_city {
+    font-size: 1.5rem;
+}
+
+.container__chart {
+    width: 100%;
+    height: 5vh;
+}
+
+.canvas {
+    height: 5vh;
+}
