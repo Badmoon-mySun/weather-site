@@ -35,19 +35,21 @@ export default {
 .main__city_temp {
   display: flex;
   align-items: center;
+  /*justify-content: center;*/
+  /*flex-wrap: wrap;*/
 
-  height: 10rem;
   width: 60%;
   margin: 0 auto;
 }
 
 .city_temp__img {
-  height: 100%;
+  height: 10rem;
 }
 
 .city_temp__temp {
   font-size: 10rem;
   padding-right: 1rem;
+  border-right: solid 1px gray;
 }
 
 .temp__char {
@@ -56,13 +58,7 @@ export default {
 }
 
 .city_temp__description {
-  height: 100%;
-  border-left: solid 1px gray;
   padding-left: 2rem;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .description__weather {
@@ -84,6 +80,22 @@ export default {
   margin-right: .5rem;
 
   fill: white;
+}
+
+@media screen and (max-width: 576px) {
+  .main__city_temp {
+    justify-content: center;
+    flex-wrap: wrap;
+    width: inherit;
+  }
+
+  .city_temp__temp {
+    border-right: none;
+  }
+
+  .city_temp__description {
+    text-align: center;
+  }
 }
 
 </style>

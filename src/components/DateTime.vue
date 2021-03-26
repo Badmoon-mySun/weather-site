@@ -25,6 +25,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
 }
 
 .date__icon {
@@ -44,5 +45,4 @@ export default {
   font-size: 130%;
   font-weight: bold;
 }
-
 </style>

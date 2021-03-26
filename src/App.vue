@@ -12,6 +12,8 @@
       <div class="container">
 
         <CityInfo/>
+<!--            v-bind:weather_data="weather_data"-->
+<!--        />-->
 
         <Chart/>
 
@@ -26,7 +28,7 @@
 import Header from "../../../dev/weather-site/src/components/Header";
 import CityInfo from "../../../dev/weather-site/src/components/CityInfo";
 import Forecast from "../../../dev/weather-site/src/components/Forecast";
-import Chart from "../../../dev/weather-site/src/components/Chart";
+import Chart from "./components/TempChart";
 
 export default {
   name: 'App',
@@ -35,7 +37,13 @@ export default {
     Forecast,
     CityInfo,
     Header
-  }
+  },
+  data() {
+    return {
+      weather_data: [],
+    }
+  },
+
 }
 </script>
 
@@ -69,6 +77,8 @@ h1, h2, h3, h4, h5 {
 .page {
   width: 100vw;
   height: 100vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .container-fluid {
@@ -106,6 +116,18 @@ h1, h2, h3, h4, h5 {
   rgba(46, 44, 73, 1) 98%,
   rgb(46, 44, 73) 100%
   );
+}
+
+@media screen and (min-width: 1580px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+@media screen and (min-width: 1824px) {
+  html {
+    font-size: 16px;
+  }
 }
 
 </style>

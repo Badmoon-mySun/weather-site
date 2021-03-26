@@ -112,7 +112,6 @@ export default {
   color: white;
 }
 
-
 .search__icon {
   width: 2rem;
 

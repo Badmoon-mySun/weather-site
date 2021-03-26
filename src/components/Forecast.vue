@@ -56,4 +56,14 @@ name: "Forecast"
   font-size: 140%;
 }
 
+@media screen and (max-width: 576px) {
+  .forecast {
+    overflow-x: scroll;
+  }
+
+  .forecast__item {
+    min-width: 100px;
+  }
+}
+
 </style>
