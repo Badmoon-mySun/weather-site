@@ -24,9 +24,9 @@
       <div class="logo_text">badmoon.weather</div>
     </div>
 
-    <form class="header__search" method="post">
+    <form class="header__search" v-on:submit.prevent="onSubmit">
       <label>
-        <input class="search__input" type="text" name="text" placeholder="Введите свой город здесь...">
+        <input class="search__input" type="text" name="text" v-model="cityName" placeholder="Введите свой город здесь...">
       </label>
       <input type="submit" hidden>
       <svg class="search__icon" viewBox="0 0 97.713 97.713" enable-background="new 0 0 97.713 97.713"
@@ -53,6 +53,16 @@ export default {
   name: "Header",
   components: {
     DateTime
+  },
+  data() {
+    return {
+      cityName: ''
+    }
+  },
+  methods: {
+    onSubmit() {
+      this.$emit("change-city", this.cityName)
+    },
   }
 }
 </script>

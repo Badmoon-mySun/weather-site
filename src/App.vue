@@ -3,23 +3,32 @@
     <header class="header">
       <div class="container-fluid">
 
-        <Header/>
+        <Header
+            @change-city="changeCity"
+        />
 
       </div>
     </header>
 
     <main class="main">
-      <div class="container">
+      <div class="container" v-if="!loading">
 
-        <CityInfo/>
-<!--            v-bind:weather_data="weather_data"-->
-<!--        />-->
 
-        <Chart/>
+        <CityInfo
+            v-bind:currentData="currentData"
+        />
 
-        <Forecast/>
+        <TempChart v-if="!loading"
+                   v-bind:hourly="oneCallData.hourly" v-bind:timezone="oneCallData.timezone_offset"
+        />
+
+        <Forecast
+            v-bind:dailyForecast="oneCallData.daily" v-bind:timezone="oneCallData.timezone_offset"
+        />
 
       </div>
+
+      <Loader v-else/>
     </main>
   </div>
 </template>
@@ -28,22 +37,57 @@
 import Header from "../../../dev/weather-site/src/components/Header";
 import CityInfo from "../../../dev/weather-site/src/components/CityInfo";
 import Forecast from "../../../dev/weather-site/src/components/Forecast";
-import Chart from "./components/TempChart";
+import TempChart from "./components/TempChart";
+import Loader from "./components/Loader";
 
 export default {
   name: 'App',
   components: {
-    Chart,
+    Loader,
+    TempChart,
     Forecast,
     CityInfo,
     Header
   },
   data() {
     return {
-      weather_data: [],
+      currentData: [],
+      oneCallData: [],
+      loading: true,
+      defaultCity: 'Казань',
+      defaultUrl: "https://api.openweathermap.org/data/2.5/",
+      appid: "&appid=" + process.env.VUE_APP_TOKEN,
+      options: "&lang=ru&units=metric"
     }
   },
+  methods: {
+    changeCity(cityName) {
+      this.loading = true
 
+      this.loadCurrentWeatherDataByCityName(cityName)
+    },
+    loadCurrentWeatherDataByCityName(cityName) {
+      let url = this.defaultUrl + "weather?q=" + cityName + this.appid + this.options
+
+      fetch(url)
+          .then(response => response.json())
+          .then(json => this.currentData = json)
+          .then(json => this.loadOneCallDataByCoordinates(json.coord.lat, json.coord.lon))
+    },
+    loadOneCallDataByCoordinates(lat, lon) {
+      let url = this.defaultUrl + "onecall?lat=" + lat + "&lon=" + lon +
+          this.appid + this.options + "&exclude=current,alerts,minutely"
+      fetch(url)
+          .then(response => response.json())
+          .then(json => {
+            this.oneCallData = json
+            this.loading = false
+          })
+    }
+  },
+  mounted() {
+    this.loadCurrentWeatherDataByCityName(this.defaultCity)
+  }
 }
 </script>
 

@@ -1,12 +1,12 @@
 <template>
   <div class="main__city_temp">
-    <img class="city_temp__img" src="../assets/img/cloudy.svg" alt="Cloudy">
+    <img class="city_temp__img" :src="getSrcImg(currentData.weather[0].icon)" alt="">
     <div class="city_temp__temp">
-      <span class="temp__digit">-70</span>
+      <span class="temp__digit">{{ Math.round(currentData.main.temp) }}</span>
       <span class="temp__char">°</span>
     </div>
     <div class="city_temp__description">
-      <span class="description__weather">Облачно с прояснениями</span>
+      <span class="description__weather">{{ ucFirst(currentData.weather[0].description) }}</span>
       <div class="description__city_name">
         <svg class="city_name__img" viewBox="0 0 97.713 97.713" enable-background="new 0 0 97.713 97.713"
              width="32" height="32">
@@ -18,7 +18,7 @@
                 C67.542,46.276,59.159,54.659,48.855,54.659z"/>
           </g>
         </svg>
-        <span class="city_name__text">Казань</span>
+        <span class="city_name__text">{{ currentData.name }}</span>
       </div>
     </div>
   </div>
@@ -26,7 +26,16 @@
 
 <script>
 export default {
-  name: "CityInfo"
+  name: "CityInfo",
+  props: ["currentData"],
+  methods: {
+    ucFirst(str) {
+      return str[0].toUpperCase() + str.slice(1);
+    },
+    getSrcImg(icon) {
+      return require("../assets/img/" + icon.toString() + ".svg");
+    }
+  }
 }
 </script>
 
@@ -35,15 +44,13 @@ export default {
 .main__city_temp {
   display: flex;
   align-items: center;
-  /*justify-content: center;*/
-  /*flex-wrap: wrap;*/
-
-  width: 60%;
-  margin: 0 auto;
+  justify-content: center;
+  margin-left: -12rem;
 }
 
 .city_temp__img {
   height: 10rem;
+  margin-right: 1rem;
 }
 
 .city_temp__temp {
@@ -84,9 +91,8 @@ export default {
 
 @media screen and (max-width: 576px) {
   .main__city_temp {
-    justify-content: center;
     flex-wrap: wrap;
-    width: inherit;
+    margin: 0;
   }
 
   .city_temp__temp {

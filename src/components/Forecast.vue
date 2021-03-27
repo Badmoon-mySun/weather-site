@@ -1,13 +1,13 @@
 <template>
   <div class="forecast">
-    <div class="forecast__item" v-for="item in 6">
+    <div class="forecast__item" v-for="day in dailyForecast.slice(1, 7)">
       <div class="item__temp">
-        <span class="temp__digit">-70</span>
+        <span class="temp__digit">{{ Math.round(day.temp.day) }}</span>
         <span class="temp__char">°</span>
       </div>
-      <img src="../assets/img/cloudy.svg" alt="cloudy" class="item__img">
+      <img :src="getSrcImg(day.weather[0].icon)" alt="cloudy" class="item__img">
       <div class="item__week_day">
-        <span class="week_day__text">Суббота</span>
+        <span class="week_day__text">{{ getWeekDay(day.dt + timezone) }}</span>
       </div>
     </div>
   </div>
@@ -15,7 +15,30 @@
 
 <script>
 export default {
-name: "Forecast"
+  name: "Forecast",
+  props: ["dailyForecast", "timezone"],
+  methods: {
+    getSrcImg(icon) {
+      return require("../assets/img/" + icon.toString() + ".svg");
+    },
+    getWeekDay(millis) {
+      let date = new Date()
+      date.setTime(millis * 1000)
+
+      let days = [
+        'Воскресенье',
+        'Понедельник',
+        'Вторник',
+        'Среда',
+        'Четверг',
+        'Пятница',
+        'Суббота'
+      ];
+
+      return days[date.getDay()]
+    },
+  },
+
 }
 </script>
 
